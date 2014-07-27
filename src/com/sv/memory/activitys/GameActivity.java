@@ -8,6 +8,7 @@ import android.widget.*;
 import com.sv.memory.R;
 import com.sv.memory.activitys.adapters.GameGridAdapter;
 import com.sv.memory.activitys.models.GameGridItem;
+import com.sv.memory.activitys.tools.CountListener;
 import com.sv.memory.activitys.tools.Counter;
 
 import java.util.ArrayList;
@@ -16,10 +17,11 @@ import java.util.Collections;
 /**
  * Created by SV on 7/3/2014.
  */
-public class GameActivity extends Activity implements AdapterView.OnItemClickListener {
+public class GameActivity extends Activity implements AdapterView.OnItemClickListener, CountListener {
 
     private GridView gameGrid;
     private Handler handler;
+    private Counter counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +39,13 @@ public class GameActivity extends Activity implements AdapterView.OnItemClickLis
 
         Collections.shuffle(list);
 
-        gameGrid.setNumColumns(3);
-        gameGrid.setColumnWidth(80);
-        gameGrid.setVerticalSpacing(5);
-        gameGrid.setHorizontalSpacing(5);
-        gameGrid.setStretchMode(GridView.STRETCH_SPACING_UNIFORM);
-
         gameGrid.setAdapter(new GameGridAdapter(this, R.layout.grid_item, list));
         gameGrid.setOnItemClickListener(this);
 
-        Counter counter = new Counter(30*1000, 1000);
+        counter = new Counter(30*1000, 1000);
         counter.setProgressBar((ProgressBar) findViewById(R.id.progressCounter));
         counter.setTextCounter((TextView) findViewById(R.id.textCounter));
+        counter.setCountListener(this);
         counter.start();
     }
 
@@ -65,6 +62,10 @@ public class GameActivity extends Activity implements AdapterView.OnItemClickLis
     @Override
     protected void onStop() {
         super.onStop();
+
+        if(isFinishing()) {
+            counter.cancel();
+        }
     }
 
     @Override
@@ -108,7 +109,7 @@ public class GameActivity extends Activity implements AdapterView.OnItemClickLis
                             tmpAdapter.notifyDataSetInvalidated();
                             gameGrid.setOnItemClickListener(GameActivity.this);
                         }
-                    }, 2000);
+                    }, 1000);
 
                 } else {
                     tmpAdapter.setValueFirst(-1);
@@ -128,7 +129,19 @@ public class GameActivity extends Activity implements AdapterView.OnItemClickLis
 
             if(j == tmpAdapter.getCount()-1) {
                 Toast.makeText(getApplicationContext(), "You Win!", Toast.LENGTH_LONG).show();
+                counter.cancel();
             }
         }
+    }
+
+    @Override
+    public void onFinish() {
+        Toast.makeText(getApplicationContext(), "Game Over!", Toast.LENGTH_SHORT).show();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+            }
+        },2000);
     }
 }

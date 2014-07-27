@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.sv.memory.R;
 import com.sv.memory.activitys.models.GameGridItem;
@@ -20,13 +21,14 @@ public class GameGridAdapter extends ArrayAdapter<GameGridItem> {
     private int valueFirst;
     private int valueSecond;
 
+    private int heightItem;
+
     public GameGridAdapter(Activity activity, int textViewResourceId, ArrayList<GameGridItem> data) {
         super(activity, textViewResourceId, data);
 
         this.activity = activity;
         valueFirst = -1;
         valueSecond = -1;
-
     }
 
     @Override
@@ -37,6 +39,11 @@ public class GameGridAdapter extends ArrayAdapter<GameGridItem> {
 
         TextView item = (TextView) view.findViewById(R.id.viewItem);
 
+        if(heightItem != 0) {
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) item.getLayoutParams();
+            lp.height = heightItem;
+            item.setLayoutParams(lp);
+        }
         if(getItem(position).isForeground()) {
             item.setText("" +getItem(position).getValue());
         }
@@ -58,6 +65,15 @@ public class GameGridAdapter extends ArrayAdapter<GameGridItem> {
 
     public void setValueSecond(int valueSecond) {
         this.valueSecond = valueSecond;
+    }
+
+
+    public int getHeightItem() {
+        return heightItem;
+    }
+
+    public void setHeightItem(int heightItem) {
+        this.heightItem = heightItem;
     }
 
 }

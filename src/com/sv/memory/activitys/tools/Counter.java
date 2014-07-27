@@ -9,22 +9,24 @@ import android.widget.TextView;
  */
 public class Counter extends CountDownTimer {
 
+    private CountListener countListener;
 
     private ProgressBar progressBar;
     private TextView textCounter;
 
     private int progress = 100;
-    private float count;
+    private float step;
 
     public Counter(long millisInFuture, long countDownInterval) {
         super(millisInFuture, countDownInterval);
 
-        this.count = (float) progress / ((int) millisInFuture/1000);
+        this.step = (float) progress / ((int) millisInFuture/1000);
     }
 
     @Override
     public void onTick(long l) {
-        progress -= count;
+
+        progress -= step;
 
         if(progress <=0) {
             progressBar.setProgress(0);
@@ -37,7 +39,9 @@ public class Counter extends CountDownTimer {
 
     @Override
     public void onFinish() {
-
+        if(countListener!=null) {
+            countListener.onFinish();
+        }
     }
 
     public ProgressBar getProgressBar() {
@@ -54,5 +58,13 @@ public class Counter extends CountDownTimer {
 
     public void setTextCounter(TextView textCounter) {
         this.textCounter = textCounter;
+    }
+
+    public CountListener getCountListener() {
+        return countListener;
+    }
+
+    public void setCountListener(CountListener countListener) {
+        this.countListener = countListener;
     }
 }

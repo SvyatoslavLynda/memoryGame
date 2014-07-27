@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.sv.memory.R;
 
-public class MainActivity extends Activity {
+public class MenuActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
