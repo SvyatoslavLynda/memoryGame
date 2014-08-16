@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="bottom"
+              android:background="@drawable/menu_bg" >
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"
+                android:scaleType="center" android:layout_marginTop="200dp" android:layout_marginBottom="250dp"/>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/newGameBtm"
+                android:textColor="@color/white"
+                android:onClick="newGame"
+                android:background="@drawable/menu_button"
+                android:soundEffectsEnabled="false"
+                android:layout_marginLeft="64dp"
+                android:layout_marginRight="64dp"
+                android:layout_marginBottom="16dp"/>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/OptionBtn"
+                android:onClick="option"
+                android:textColor="@color/white"
+                android:background="@drawable/menu_button"
+                android:soundEffectsEnabled="false"
+                android:layout_marginLeft="64dp"
+                android:layout_marginRight="64dp"
+                android:layout_marginBottom="16dp"/>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/moreAPPSBtn"
+                android:onClick="moreGame"
+                android:textColor="@color/white"
+                android:background="@drawable/menu_button"
+                android:layout_marginLeft="64dp"
+                android:layout_marginRight="64dp"
+                android:layout_marginBottom="16dp"
+                android:soundEffectsEnabled="false"/>
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/menu_bottom_bg"
+            android:scaleType="fitEnd"/>
+</FrameLayout>
+

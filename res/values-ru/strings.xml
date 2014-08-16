@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мемори</string>
+
+    <string name="continueBtn">ПРОДОЛЖЫТЬ</string>
+    <string name="newGameBtm">НОВАЯ ИГРА</string>
+    <string name="OptionBtn">НАСТРОЙКИ</string>
+    <string name="moreAPPSBtn">БОЛЬШЕ ПРИЛОЖЕНИЙ</string>
+
+    <string name="ScoreTitle">Счет: </string>
+    <string name="LevelTitle">Уровень: </string>
+
+    <string name="cancelBtn">НАЗАД</string>
+    <string name="okBtn">ОК</string>
+
+    <string name="sound">Звук</string>
+    <string name="vibrate">Вибрация</string>
+    <string name="advertisement">Реклама</string>
+
+    <string name="on">ВКЛ.</string>
+    <string name="off">ВЫКЛ.</string>
+</resources>

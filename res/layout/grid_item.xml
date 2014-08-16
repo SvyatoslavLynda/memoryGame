@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:orientation="vertical" >
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+           android:id="@+id/viewItem"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:soundEffectsEnabled="false"
+           android:gravity="center"
+           android:src="@drawable/classic_football_bg"/>
+<!--<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/viewFlipperItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:soundEffectsEnabled="false"
+        android:addStatesFromChildren="true"
+        android:gravity="center">
 
-    <TextView
-            android:id="@+id/viewItem"
+    <ImageView
+            android:id="@+id/firstImg"
+            android:src="@drawable/classic_football_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="42dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:minHeight="?android:attr/listPreferredItemHeight"
-            android:background="@drawable/classic_football_bg"/>
-    <!--"@android:drawable/btn_default-->
-</LinearLayout>
+            android:soundEffectsEnabled="false"
+            android:gravity="center" />
+
+    <ImageView
+            android:id="@+id/secondImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:soundEffectsEnabled="false"
+            android:gravity="center" />
+
+</ViewFlipper>-->

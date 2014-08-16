@@ -6,34 +6,45 @@
               android:layout_height="match_parent">
 
     <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="48dp"
+                  android:orientation="horizontal"
+                  android:background="@drawable/scorebar_background" >
+        <TextView android:id="@+id/gameLevel"
+                  android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:orientation="horizontal" >
+                  android:text="@string/LevelTitle"
+                  android:textSize="16dp"
+                  android:textColor="@color/white"
+                  android:textStyle="bold"
+                  android:layout_gravity="center_vertical"
+                  android:layout_weight="1" android:gravity="left" android:layout_marginLeft="16dp"/>
         <TextView android:id="@+id/gameScore"
-                  android:layout_width="wrap_content"
+                  android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:text="Score: "/>
-        <View android:layout_width="match_parent"
-              android:layout_height="0dp"
-              android:layout_weight="1"/>
-        <ImageButton android:id="@+id/gamePause"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="right"/>
+                  android:text="@string/ScoreTitle"
+                  android:textSize="16dp"
+                  android:textColor="@color/white"
+                  android:textStyle="bold"
+                  android:layout_gravity="center_vertical"
+                  android:layout_weight="1" android:layout_marginRight="16dp" android:gravity="right"/>
+
     </LinearLayout>
 
-    <com.sv.memory.activitys.layout.GameGridLayout
+    <com.sv.memory.layout.GameGridLayout
             android:id="@+id/gameGridLayout"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:background="@drawable/bg"
+            android:background="@drawable/game_board_bg"
             android:layout_weight="1">
         <GridView android:id="@+id/gameGrid"
                   android:layout_width="match_parent"
-                  android:layout_height="match_parent"/>
-    </com.sv.memory.activitys.layout.GameGridLayout>
-
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:listSelector="@drawable/grid_item"
+                  android:soundEffectsEnabled="false"/>
+    </com.sv.memory.layout.GameGridLayout>
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -41,6 +52,7 @@
                 android:id="@+id/progressCounter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:progressDrawable="@drawable/progress_drawable"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:progress="100" />
         <TextView
